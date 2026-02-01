@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>II. Wait for Signal — Settle Nights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --red: #ff3333; --night: #0a0c10; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--night); color: #fff; line-height: 1.8; }
+        nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; mix-blend-mode: difference; }
+        nav a { color: #fff; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; }
+        .work-number { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+        .image-section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 2rem; background: radial-gradient(ellipse at center, rgba(255,51,51,0.06) 0%, transparent 60%); }
+        .image-container { max-width: 700px; width: 100%; }
+        .image-container img { width: 100%; height: auto; display: block; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8); }
+        .analysis { max-width: 700px; margin: 0 auto; padding: 6rem 2rem 8rem; }
+        .work-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; margin-bottom: 0.5rem; }
+        .work-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,0.5); margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .analysis h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--red); margin-top: 3rem; margin-bottom: 1rem; letter-spacing: 0.05em; }
+        .analysis p { color: rgba(255,255,255,0.75); margin-bottom: 1.5rem; }
+        .analysis p:first-of-type { font-size: 1.15rem; color: rgba(255,255,255,0.85); }
+        .technical { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .technical h3 { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 1rem; }
+        .technical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; }
+        .technical-item label { display: block; font-size: 0.7rem; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
+        .technical-item span { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+        .pagination { display: flex; justify-content: space-between; max-width: 700px; margin: 0 auto; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .pagination a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+        .pagination a:hover { color: #fff; }
+        .pagination .next { text-align: right; }
+        .pagination .label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 0.3rem; }
+        .pagination .title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .work-title { font-size: 2rem; } .image-section { padding: 5rem 1rem; } .analysis { padding: 3rem 1.5rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">← Back to Exhibition</a>
+        <span class="work-number">II / V</span>
+    </nav>
+
+    <section class="image-section">
+        <div class="image-container">
+            <img src="images/red-man.jpg" alt="Pedestrian crossing signal showing red man">
+        </div>
+    </section>
+
+    <section class="analysis">
+        <h1 class="work-title">Wait for Signal</h1>
+        <p class="work-subtitle">Push button · Deep red</p>
+        
+        <p>
+            The red man stands motionless, hands slightly away from his sides, 
+            waiting. He has been waiting since 1969, when the first pedestrian 
+            crossing signals were installed in the UK. Fifty-seven years of standing 
+            still, teaching us patience.
+        </p>
+        
+        <h2>On Light</h2>
+        <p>
+            This is not merely red light — it is red light in fog, in moisture, in 
+            the particular atmosphere of a February evening in Yorkshire. The LED 
+            array behind the figure creates a halo effect, a bloom that extends 
+            far beyond the boundaries of the signal housing. The red bleeds into 
+            the air itself.
+        </p>
+        <p>
+            The exposure captures something the eye normalises away: the sheer 
+            intensity of this red. It dominates the frame, painting the pole, 
+            the pavement, the photographer's own reflection in the glass. In the 
+            background, buildings become suggestions, memories of architecture 
+            seen through a veil of crimson.
+        </p>
+        
+        <h2>On the Figure</h2>
+        <p>
+            Look at the posture. The red man is not aggressive, not warning — 
+            he is simply present, standing with a certain dignity. His form is 
+            deliberately androgynous, universal, reduced to the essential elements 
+            of human shape. Head, torso, arms, legs. Nothing more.
+        </p>
+        <p>
+            Below him, barely visible, the green walking man waits in darkness. 
+            Two states of being, two possible futures, contained in one small box.
+        </p>
+        
+        <h2>On Instruction</h2>
+        <p>
+            "Push button. Wait for signal." The text at the bottom of the frame 
+            is almost lost in the red wash, but its presence matters. This is 
+            public space speaking to its inhabitants: here is what you must do, 
+            here is the correct behaviour.
+        </p>
+        <p>
+            The British pedestrian crossing is a social contract made visible. 
+            We agree to wait. We agree to trust that the green man will come. 
+            We agree that this small glowing figure has authority over our movement.
+        </p>
+        
+        <h2>On Colour Theory</h2>
+        <p>
+            Red is the colour of stop, of warning, of attention demanded. This is 
+            not arbitrary — human eyes contain more receptors for red light than 
+            for any other colour. We evolved to notice red: the red of blood, 
+            of ripe fruit, of fire. The red man exploits millions of years of 
+            biological programming.
+        </p>
+        <p>
+            But red is also warmth. And in this image, shot on a cold night, 
+            there is something almost comforting about this glow. The red man 
+            is not hostile. He is simply asking you to pause, to notice, 
+            to be present in this moment at this crossing.
+        </p>
+        
+        <div class="technical">
+            <h3>Technical Notes</h3>
+            <div class="technical-grid">
+                <div class="technical-item">
+                    <label>Dominant Colour</label>
+                    <span style="color: var(--red);">Signal Red (#ff3333)</span>
+                </div>
+                <div class="technical-item">
+                    <label>Light Source</label>
+                    <span>LED array, 630nm</span>
+                </div>
+                <div class="technical-item">
+                    <label>Atmosphere</label>
+                    <span>Light mist</span>
+                </div>
+                <div class="technical-item">
+                    <label>Exposure Effect</label>
+                    <span>Controlled bloom</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="pagination">
+        <a href="royal-oak.html">
+            <span class="label">Previous Work</span>
+            <span class="title">I. The Royal Oak</span>
+        </a>
+        <a href="asda.html" class="next">
+            <span class="label">Next Work</span>
+            <span class="title">III. Open Late</span>
+        </a>
+    </nav>
+</body>
+</html>

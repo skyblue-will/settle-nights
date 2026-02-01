@@ -3,338 +3,403 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Settle Nights</title>
+    <title>Settle Nights — An Exhibition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
             --gold: #d4a84b;
             --red: #ff3333;
             --green: #7ac943;
             --night: #0a0c10;
-            --night-blue: #0d1117;
         }
         
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-        }
+        html { scroll-behavior: smooth; }
         
         body {
             font-family: 'Inter', sans-serif;
             background: var(--night);
             color: #fff;
-            overflow-x: hidden;
+            line-height: 1.7;
         }
         
-        .serif {
-            font-family: 'Cormorant Garamond', Georgia, serif;
+        .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(10,12,16,0.9) 0%, transparent 100%);
         }
         
-        /* Hero Section */
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover { color: #fff; }
+        
+        /* Hero */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 2rem;
             position: relative;
-            scroll-snap-align: start;
-            background: linear-gradient(180deg, var(--night) 0%, var(--night-blue) 100%);
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(ellipse at 30% 20%, rgba(212, 168, 75, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 80%, rgba(255, 51, 51, 0.05) 0%, transparent 40%);
+            inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 30%, rgba(212,168,75,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(255,51,51,0.04) 0%, transparent 40%),
+                radial-gradient(ellipse at 50% 90%, rgba(122,201,67,0.03) 0%, transparent 30%);
             pointer-events: none;
+        }
+        
+        .hero-content { position: relative; z-index: 1; }
+        
+        .exhibition-label {
+            font-size: 0.7rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 2rem;
         }
         
         .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(4rem, 15vw, 12rem);
-            font-weight: 400;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            z-index: 1;
+            font-size: clamp(3rem, 12vw, 8rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
         }
         
-        .hero p {
-            font-size: 1rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-            margin-top: 1rem;
+        .hero h1 em {
+            font-style: italic;
             font-weight: 300;
         }
         
-        .scroll-hint {
-            position: absolute;
-            bottom: 3rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            color: rgba(255,255,255,0.3);
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        .scroll-hint::after {
-            content: '';
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
-        
-        /* Photo Sections */
-        .photo-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            scroll-snap-align: start;
-            padding: 2rem;
-        }
-        
-        .photo-container {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-        }
-        
-        .photo-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 2px;
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
-        }
-        
-        .photo-caption {
-            position: absolute;
-            bottom: -4rem;
-            left: 0;
-            right: 0;
-            text-align: center;
-        }
-        
-        .photo-caption h2 {
+        .hero-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
+            font-size: 1.5rem;
             font-style: italic;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.6);
+            margin-top: 1rem;
         }
         
-        .photo-caption p {
+        .hero-meta {
+            margin-top: 4rem;
             font-size: 0.8rem;
             color: rgba(255,255,255,0.3);
-            margin-top: 0.5rem;
             letter-spacing: 0.15em;
         }
         
-        /* Color accents per section */
-        .section-gold {
-            background: radial-gradient(ellipse at center, rgba(212, 168, 75, 0.03) 0%, transparent 70%);
+        /* Introduction */
+        .intro {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            text-align: center;
         }
         
-        .section-red {
-            background: radial-gradient(ellipse at center, rgba(255, 51, 51, 0.04) 0%, transparent 60%);
+        .intro p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
         }
         
-        .section-green {
-            background: radial-gradient(ellipse at center, rgba(122, 201, 67, 0.03) 0%, transparent 70%);
+        .intro p + p { margin-top: 1.5rem; }
+        
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 4rem 2rem 8rem;
         }
         
-        .section-blue {
-            background: radial-gradient(ellipse at center, rgba(50, 100, 150, 0.04) 0%, transparent 70%);
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
         }
         
-        /* Outro */
-        .outro {
-            height: 100vh;
+        .section-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            cursor: pointer;
+            background: #111;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+            opacity: 0.7;
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            scroll-snap-align: start;
+            justify-content: flex-end;
             padding: 2rem;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         
-        .outro blockquote {
+        .gallery-item:hover .gallery-item-overlay { opacity: 1; }
+        
+        .gallery-item-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-size: 1.6rem;
             font-style: italic;
-            max-width: 700px;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
         }
         
-        .outro cite {
-            display: block;
-            margin-top: 2rem;
-            font-style: normal;
+        .gallery-item-meta {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+        }
+        
+        .gallery-item a {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        footer h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        
+        footer p {
             font-size: 0.85rem;
-            color: rgba(255,255,255,0.3);
-            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.8;
         }
         
-        .color-bar {
+        .color-palette {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-top: 4rem;
+            gap: 1.5rem;
+            margin-top: 3rem;
         }
         
-        .color-dot {
-            width: 8px;
-            height: 8px;
+        .color-swatch {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            position: relative;
         }
         
-        .color-dot.gold { background: var(--gold); box-shadow: 0 0 20px var(--gold); }
-        .color-dot.red { background: var(--red); box-shadow: 0 0 20px var(--red); }
-        .color-dot.green { background: var(--green); box-shadow: 0 0 20px var(--green); }
+        .color-swatch::after {
+            content: attr(data-name);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            font-size: 0.65rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
         
-        footer {
-            padding: 2rem;
-            text-align: center;
-            font-size: 0.75rem;
+        .color-swatch.gold { background: var(--gold); box-shadow: 0 0 30px rgba(212,168,75,0.4); }
+        .color-swatch.red { background: var(--red); box-shadow: 0 0 30px rgba(255,51,51,0.4); }
+        .color-swatch.green { background: var(--green); box-shadow: 0 0 30px rgba(122,201,67,0.4); }
+        
+        .copyright {
+            margin-top: 4rem;
+            font-size: 0.7rem;
             color: rgba(255,255,255,0.2);
             letter-spacing: 0.1em;
         }
         
-        /* Smooth image loading */
-        .photo-container img {
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        
-        .photo-container img.loaded {
-            opacity: 1;
-        }
-        
         @media (max-width: 768px) {
-            .photo-section {
-                padding: 1rem;
-                min-height: auto;
-                padding-top: 4rem;
-                padding-bottom: 6rem;
-            }
-            
-            .photo-caption {
-                position: relative;
-                bottom: auto;
-                margin-top: 1.5rem;
-            }
-            
-            html {
-                scroll-snap-type: none;
-            }
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .intro { padding: 4rem 1.5rem; }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-logo">Settle Nights</div>
+        <div class="nav-links">
+            <a href="#works">The Works</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
     <section class="hero">
-        <h1>Settle</h1>
-        <p>After dark</p>
-        <div class="scroll-hint">Scroll</div>
-    </section>
-
-    <section class="photo-section section-gold">
-        <div class="photo-container">
-            <img src="images/royal-oak.jpg" alt="Royal Oak Country Inn" onload="this.classList.add('loaded')">
-            <div class="photo-caption">
-                <h2>The Royal Oak</h2>
-                <p>Country Inn & Dining</p>
-            </div>
+        <div class="hero-content">
+            <p class="exhibition-label">An Exhibition</p>
+            <h1>Settle <em>Nights</em></h1>
+            <p class="hero-subtitle">Studies in nocturnal light</p>
+            <p class="hero-meta">1 February 2026 · Yorkshire Dales</p>
         </div>
     </section>
 
-    <section class="photo-section section-red">
-        <div class="photo-container">
-            <img src="images/red-man.jpg" alt="Pedestrian crossing at night" onload="this.classList.add('loaded')">
-            <div class="photo-caption">
-                <h2>Wait for Signal</h2>
-                <p>Push button</p>
-            </div>
-        </div>
+    <section class="intro">
+        <p>
+            There is a particular quality to light after dark in small English towns — 
+            the way sodium lamps pool on wet pavements, the glow of a pub sign against 
+            limestone, the alien green of a petrol station forecourt.
+        </p>
+        <p>
+            This collection captures Settle, North Yorkshire, on an ordinary Sunday evening. 
+            No special occasion. No event. Just the quiet theatre of a market town 
+            after the shops have closed.
+        </p>
+        <p>
+            Five photographs. Five different qualities of artificial light. 
+            One walk through a town of 2,500 souls.
+        </p>
     </section>
 
-    <section class="photo-section section-green">
-        <div class="photo-container">
-            <img src="images/asda.jpg" alt="ASDA Express at night" onload="this.classList.add('loaded')">
-            <div class="photo-caption">
-                <h2>Open Late</h2>
-                <p>6am – 10pm</p>
-            </div>
+    <section class="gallery-section" id="works">
+        <div class="section-header">
+            <h2>The Works</h2>
         </div>
-    </section>
-
-    <section class="photo-section section-blue">
-        <div class="photo-container">
-            <img src="images/whitefriars.jpg" alt="Whitefriars Car Park" onload="this.classList.add('loaded')">
-            <div class="photo-caption">
-                <h2>Whitefriars</h2>
-                <p>Vehicles must park wholly within a marked bay</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="photo-section">
-        <div class="photo-container">
-            <img src="images/high-street.jpg" alt="Settle High Street at night" onload="this.classList.add('loaded')">
-            <div class="photo-caption">
-                <h2>The High Street</h2>
-                <p>Fish & Chips · Golden Dragon · Green Light</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="outro">
-        <blockquote>
-            "A small market town on the edge of the Yorkshire Dales. 
-            Population 2,500. One traffic light. 
-            Everything you need, nothing you don't."
-        </blockquote>
-        <cite>— Settle, North Yorkshire</cite>
         
-        <div class="color-bar">
-            <div class="color-dot gold"></div>
-            <div class="color-dot red"></div>
-            <div class="color-dot green"></div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <a href="royal-oak.html"></a>
+                <img src="images/royal-oak.jpg" alt="Royal Oak">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">I. The Royal Oak</h3>
+                    <p class="gallery-item-meta">Gold on grey · Traditional signage</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="red-man.html"></a>
+                <img src="images/red-man.jpg" alt="Red Man">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">II. Wait for Signal</h3>
+                    <p class="gallery-item-meta">Deep red · Urban instruction</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="asda.html"></a>
+                <img src="images/asda.jpg" alt="ASDA Express">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">III. Open Late</h3>
+                    <p class="gallery-item-meta">Neon green · Commercial glow</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="whitefriars.html"></a>
+                <img src="images/whitefriars.jpg" alt="Whitefriars">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">IV. Whitefriars</h3>
+                    <p class="gallery-item-meta">Floodlit · Civic authority</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="high-street.html"></a>
+                <img src="images/high-street.jpg" alt="High Street">
+                <div class="gallery-item-overlay">
+                    <h3 class="gallery-item-title">V. The High Street</h3>
+                    <p class="gallery-item-meta">Mixed spectrum · The whole palette</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        February 2026 · Sunday Night
+    <footer id="about">
+        <div class="footer-content">
+            <h3>About This Exhibition</h3>
+            <p>
+                These photographs were taken during an evening walk through Settle, 
+                North Yorkshire, on Sunday 1st February 2026. The temperature was 
+                around 4°C. The streets were wet from earlier rain.
+            </p>
+            <p style="margin-top: 1rem;">
+                No filters. No post-processing beyond minor exposure adjustment. 
+                What you see is what was there.
+            </p>
+            
+            <div class="color-palette">
+                <div class="color-swatch gold" data-name="Pub Gold"></div>
+                <div class="color-swatch red" data-name="Signal Red"></div>
+                <div class="color-swatch green" data-name="Retail Green"></div>
+            </div>
+            
+            <p class="copyright">© 2026 · Settle Nights</p>
+        </div>
     </footer>
 </body>
 </html>

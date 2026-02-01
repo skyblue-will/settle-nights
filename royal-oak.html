@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I. The Royal Oak — Settle Nights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --gold: #d4a84b; --night: #0a0c10; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--night);
+            color: #fff;
+            line-height: 1.8;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+        }
+        
+        .work-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+        
+        .image-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            background: radial-gradient(ellipse at center, rgba(212,168,75,0.04) 0%, transparent 60%);
+        }
+        
+        .image-container {
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+        }
+        
+        .analysis {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 6rem 2rem 8rem;
+        }
+        
+        .work-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+        
+        .work-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .analysis h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--gold);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .analysis p {
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 1.5rem;
+        }
+        
+        .analysis p:first-of-type {
+            font-size: 1.15rem;
+            color: rgba(255,255,255,0.85);
+        }
+        
+        .technical {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .technical h3 {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 1rem;
+        }
+        
+        .technical-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .technical-item label {
+            display: block;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.3rem;
+        }
+        
+        .technical-item span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .pagination a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+        
+        .pagination a:hover { color: #fff; }
+        
+        .pagination .next { text-align: right; }
+        
+        .pagination .label {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .pagination .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+        
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .work-title { font-size: 2rem; }
+            .image-section { padding: 5rem 1rem; }
+            .analysis { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">← Back to Exhibition</a>
+        <span class="work-number">I / V</span>
+    </nav>
+
+    <section class="image-section">
+        <div class="image-container">
+            <img src="images/royal-oak.jpg" alt="The Royal Oak pub sign at night">
+        </div>
+    </section>
+
+    <section class="analysis">
+        <h1 class="work-title">The Royal Oak</h1>
+        <p class="work-subtitle">Country Inn & Dining · Gold on grey</p>
+        
+        <p>
+            The hanging pub sign is one of Britain's oldest forms of public communication — 
+            a tradition stretching back to Roman times when vintners hung vine leaves 
+            outside their establishments. Here, photographed against the black of a 
+            February evening, the form achieves something close to portraiture.
+        </p>
+        
+        <h2>On Light</h2>
+        <p>
+            The illumination comes from a single linear LED strip mounted above the sign, 
+            casting downward in a controlled fall. This creates a gradient across the 
+            painted surface — brightest at the crown motif, fading to shadow at the 
+            oak leaves below. The effect is theatrical, almost ecclesiastical: light 
+            descending from above onto symbols of authority and nature.
+        </p>
+        <p>
+            Note how the limestone wall catches scattered light on the right edge of frame, 
+            revealing texture that dates this building to the 18th or 19th century. 
+            The stone itself becomes a timestamp.
+        </p>
+        
+        <h2>On Colour</h2>
+        <p>
+            The palette is severely restricted: warm gold against cool grey, with 
+            the black negative space of night. This restraint is the sign's genius. 
+            The gold reads as heritage, as quality, as permanence. It says: this 
+            establishment has been here long enough to earn its crown.
+        </p>
+        <p>
+            The grey ground could be read as stone, or as twilight, or as the 
+            particular light of the Dales. It is quintessentially Northern English — 
+            neither the cream of Cotswold stone nor the red of Manchester brick, 
+            but something more weathered, more reserved.
+        </p>
+        
+        <h2>On Composition</h2>
+        <p>
+            The photograph is taken from below, looking up — the natural perspective 
+            of the pedestrian, the drinker approaching the door. This angle grants 
+            the sign a certain monumentality. The wrought iron bracket, with its 
+            decorative scrollwork, enters the frame to anchor the sign to something 
+            solid, something made by human hands.
+        </p>
+        <p>
+            The slight Dutch angle (perhaps 5-7 degrees) was likely unintentional, 
+            the result of photographing while walking, but it adds dynamism to what 
+            could otherwise be a static image. The sign appears to be swinging gently 
+            into frame, as if moved by wind we cannot see.
+        </p>
+        
+        <h2>On Meaning</h2>
+        <p>
+            The Royal Oak is England's third most common pub name, commemorating 
+            the oak tree in which Charles II hid from Parliamentarian soldiers in 1651. 
+            The crown above the name makes this lineage explicit. Every Royal Oak 
+            is a quiet assertion of the Restoration, of tradition triumphant.
+        </p>
+        <p>
+            But photographed like this — isolated, glowing, suspended in darkness — 
+            the sign becomes something else: a beacon. In a town of 2,500 people, 
+            on a cold February Sunday, this light says: there is warmth here, 
+            there is company, there is something to return to.
+        </p>
+        
+        <div class="technical">
+            <h3>Technical Notes</h3>
+            <div class="technical-grid">
+                <div class="technical-item">
+                    <label>Dominant Colour</label>
+                    <span style="color: var(--gold);">Gold (#d4a84b)</span>
+                </div>
+                <div class="technical-item">
+                    <label>Light Source</label>
+                    <span>LED strip, 4000K</span>
+                </div>
+                <div class="technical-item">
+                    <label>Time</label>
+                    <span>~21:27</span>
+                </div>
+                <div class="technical-item">
+                    <label>Temperature</label>
+                    <span>4°C</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="pagination">
+        <a href="index.html">
+            <span class="label">Return to</span>
+            <span class="title">Exhibition</span>
+        </a>
+        <a href="red-man.html" class="next">
+            <span class="label">Next Work</span>
+            <span class="title">II. Wait for Signal</span>
+        </a>
+    </nav>
+</body>
+</html>
