@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settle Nights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --gold: #d4a84b;
+            --red: #ff3333;
+            --green: #7ac943;
+            --night: #0a0c10;
+            --night-blue: #0d1117;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--night);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            scroll-snap-align: start;
+            background: linear-gradient(180deg, var(--night) 0%, var(--night-blue) 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 20%, rgba(212, 168, 75, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(255, 51, 51, 0.05) 0%, transparent 40%);
+            pointer-events: none;
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.6) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero p {
+            font-size: 1rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .scroll-hint::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+        
+        /* Photo Sections */
+        .photo-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            scroll-snap-align: start;
+            padding: 2rem;
+        }
+        
+        .photo-container {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+        }
+        
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 2px;
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: -4rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        
+        .photo-caption h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .photo-caption p {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 0.5rem;
+            letter-spacing: 0.15em;
+        }
+        
+        /* Color accents per section */
+        .section-gold {
+            background: radial-gradient(ellipse at center, rgba(212, 168, 75, 0.03) 0%, transparent 70%);
+        }
+        
+        .section-red {
+            background: radial-gradient(ellipse at center, rgba(255, 51, 51, 0.04) 0%, transparent 60%);
+        }
+        
+        .section-green {
+            background: radial-gradient(ellipse at center, rgba(122, 201, 67, 0.03) 0%, transparent 70%);
+        }
+        
+        .section-blue {
+            background: radial-gradient(ellipse at center, rgba(50, 100, 150, 0.04) 0%, transparent 70%);
+        }
+        
+        /* Outro */
+        .outro {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            scroll-snap-align: start;
+            padding: 2rem;
+        }
+        
+        .outro blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-style: italic;
+            max-width: 700px;
+            line-height: 1.6;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .outro cite {
+            display: block;
+            margin-top: 2rem;
+            font-style: normal;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.2em;
+        }
+        
+        .color-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 4rem;
+        }
+        
+        .color-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+        
+        .color-dot.gold { background: var(--gold); box-shadow: 0 0 20px var(--gold); }
+        .color-dot.red { background: var(--red); box-shadow: 0 0 20px var(--red); }
+        .color-dot.green { background: var(--green); box-shadow: 0 0 20px var(--green); }
+        
+        footer {
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 0.1em;
+        }
+        
+        /* Smooth image loading */
+        .photo-container img {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        .photo-container img.loaded {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .photo-section {
+                padding: 1rem;
+                min-height: auto;
+                padding-top: 4rem;
+                padding-bottom: 6rem;
+            }
+            
+            .photo-caption {
+                position: relative;
+                bottom: auto;
+                margin-top: 1.5rem;
+            }
+            
+            html {
+                scroll-snap-type: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>Settle</h1>
+        <p>After dark</p>
+        <div class="scroll-hint">Scroll</div>
+    </section>
+
+    <section class="photo-section section-gold">
+        <div class="photo-container">
+            <img src="images/royal-oak.jpg" alt="Royal Oak Country Inn" onload="this.classList.add('loaded')">
+            <div class="photo-caption">
+                <h2>The Royal Oak</h2>
+                <p>Country Inn & Dining</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-section section-red">
+        <div class="photo-container">
+            <img src="images/red-man.jpg" alt="Pedestrian crossing at night" onload="this.classList.add('loaded')">
+            <div class="photo-caption">
+                <h2>Wait for Signal</h2>
+                <p>Push button</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-section section-green">
+        <div class="photo-container">
+            <img src="images/asda.jpg" alt="ASDA Express at night" onload="this.classList.add('loaded')">
+            <div class="photo-caption">
+                <h2>Open Late</h2>
+                <p>6am – 10pm</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-section section-blue">
+        <div class="photo-container">
+            <img src="images/whitefriars.jpg" alt="Whitefriars Car Park" onload="this.classList.add('loaded')">
+            <div class="photo-caption">
+                <h2>Whitefriars</h2>
+                <p>Vehicles must park wholly within a marked bay</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="photo-section">
+        <div class="photo-container">
+            <img src="images/high-street.jpg" alt="Settle High Street at night" onload="this.classList.add('loaded')">
+            <div class="photo-caption">
+                <h2>The High Street</h2>
+                <p>Fish & Chips · Golden Dragon · Green Light</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="outro">
+        <blockquote>
+            "A small market town on the edge of the Yorkshire Dales. 
+            Population 2,500. One traffic light. 
+            Everything you need, nothing you don't."
+        </blockquote>
+        <cite>— Settle, North Yorkshire</cite>
+        
+        <div class="color-bar">
+            <div class="color-dot gold"></div>
+            <div class="color-dot red"></div>
+            <div class="color-dot green"></div>
+        </div>
+    </section>
+
+    <footer>
+        February 2026 · Saturday Night
+    </footer>
+</body>
+</html>
